@@ -18,6 +18,7 @@ class ForceTest {
 
     Vector actual = Force.applyForce(forceVector, circle);
 
-    assertThat(actual).isEqualTo(expectedForce);
+    assertThat(actual.getX()).isEqualTo(expectedForce.getX());
+    assertThat(actual.getY()).isEqualTo(expectedForce.getY());
   }
 }
