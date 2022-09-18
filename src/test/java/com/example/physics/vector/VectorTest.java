@@ -21,50 +21,50 @@ class VectorTest {
 
   @Test
   void addVector() {
-    vector.addVector(new Vector(1, 1));
+    Vector actual = vector.addVector(new Vector(1, 1));
 
-    assertThat(vector.getX()).isEqualTo(3);
-    assertThat(vector.getY()).isEqualTo(3);
+    assertThat(actual.getX()).isEqualTo(3);
+    assertThat(actual.getY()).isEqualTo(3);
   }
 
   @Test
   void subtractVector() {
-    vector.subtractVector(new Vector(1, 1));
+    Vector actual =vector.subtractVector(new Vector(1, 1));
 
-    assertThat(vector.getX()).isEqualTo(1);
-    assertThat(vector.getY()).isEqualTo(1);
+    assertThat(actual.getX()).isEqualTo(1);
+    assertThat(actual.getY()).isEqualTo(1);
   }
 
   @Test
   void addY() {
-    vector.addY(6);
+    Vector actual =vector.addY(6);
 
-    assertThat(vector.getX()).isEqualTo(2);
-    assertThat(vector.getY()).isEqualTo(8);
+    assertThat(actual.getX()).isEqualTo(2);
+    assertThat(actual.getY()).isEqualTo(8);
   }
 
   @Test
   void addX() {
-    vector.addX(6);
+    Vector actual =vector.addX(6);
 
-    assertThat(vector.getX()).isEqualTo(8);
-    assertThat(vector.getY()).isEqualTo(2);
+    assertThat(actual.getX()).isEqualTo(8);
+    assertThat(actual.getY()).isEqualTo(2);
   }
 
   @Test
   void subtractY() {
-    vector.subtractY(6);
+    Vector actual =vector.subtractY(6);
 
-    assertThat(vector.getX()).isEqualTo(2);
-    assertThat(vector.getY()).isEqualTo(-4);
+    assertThat(actual.getX()).isEqualTo(2);
+    assertThat(actual.getY()).isEqualTo(-4);
   }
 
   @Test
   void subtractX() {
-    vector.subtractX(6);
+    Vector actual =vector.subtractX(6);
 
-    assertThat(vector.getX()).isEqualTo(-4);
-    assertThat(vector.getY()).isEqualTo(2);
+    assertThat(actual.getX()).isEqualTo(-4);
+    assertThat(actual.getY()).isEqualTo(2);
   }
 
   @Test

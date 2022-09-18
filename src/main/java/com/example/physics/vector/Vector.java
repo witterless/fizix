@@ -2,8 +2,8 @@ package com.example.physics.vector;
 
 public class Vector {
 
-  private double x;
-  private double y;
+  private final double x;
+  private final double y;
 
   public Vector(double x, double y) {
     this.x = x;
@@ -11,48 +11,39 @@ public class Vector {
   }
 
   public Vector multiply(double num) {
-    this.x *= num;
-    this.y *= num;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x * num, this.y * num);
   }
 
   public Vector multiplyY(double num) {
-    this.y *= num;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x, this.y * num);
   }
 
   public Vector multiplyX(double num) {
-    this.x *= num;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x * num, this.y);
   }
 
   public Vector divide(double value) {
     if (value != 0) {
-      this.x /= value;
-      this.y /= value;
+      return new Vector(this.x / value, this.y / value);
     } else {
-      this.x = 0;
-      this.y = 0;
+      return new Vector(0, 0);
     }
-    return new Vector(this.x, this.y);
   }
 
   public Vector divideY(double value) {
     if (value != 0) {
-      this.y /= value;
+      return new Vector(this.x, this.y / value);
     } else {
-      this.y = 0;
+      return new Vector(this.x, 0);
     }
-    return new Vector(this.x, this.y);
   }
 
   public Vector divideX(double value) {
     if (value != 0) {
-      this.x /= value;
+      return new Vector(this.x / value, this.y);
     } else {
-      this.x = 0;
+      return new Vector(0, this.y);
     }
-    return new Vector(this.x, this.y);
   }
 
   public double getX() {
@@ -71,88 +62,61 @@ public class Vector {
     return new Vector(nx, ny);
   }
 
-  private double magnitude() {
-    return Math.sqrt((this.x * this.x) + (this.y * this.y));
-  }
-
-  private double findAngle() {
-    return Math.atan2(this.x, this.y) * 180 / Math.PI;
-  }
-
   public Vector addVector(Vector vector) {
-    this.x += vector.x;
-    this.y += vector.y;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x + vector.getX(), this.y + vector.getY());
   }
 
   public Vector subtractVector(Vector vector) {
-    this.x -= vector.x;
-    this.y -= vector.y;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x - vector.getX(), this.y - vector.getY());
   }
 
   public Vector addY(double y) {
-    this.y += y;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x, this.y + y);
   }
 
   public Vector addX(double x) {
-    this.x += x;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x + x, this.y);
   }
 
   public Vector subtractY(double y) {
-    this.y -= y;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x, this.y - y);
   }
 
   public Vector subtractX(double x) {
-    this.x -= x;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x - x, this.y);
   }
 
   public Vector setVector(Vector vector) {
-    this.x = vector.x;
-    this.y = vector.y;
-    return new Vector(this.x, this.y);
+    return new Vector(vector.getX(), vector.getY());
   }
 
   public Vector divideVector(Vector vector) {
-    if (vector.x != 0 || vector.y != 0) {
-      this.x /= vector.x;
-      this.y /= vector.y;
+    double x = 0;
+    double y = 0;
+
+    if (vector.getX() != 0 || vector.getY() != 0) {
+      x = this.x / vector.getX();
+      y = this.y / vector.getY();
     }
-    if (vector.x == 0) {
-      this.x = 0;
+    if (vector.getX() == 0) {
+      x = 0;
     }
-    if (vector.y == 0) {
-      this.y = 0;
+    if (vector.getY() == 0) {
+      y = 0;
     }
-    return new Vector(this.x, this.y);
+    return new Vector(x, y);
   }
 
   public Vector invert() {
-    this.x *= -1;
-    this.y *= -1;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x * -1, this.y * -1);
   }
 
   public Vector invertX() {
-    this.x *= -1;
-    return new Vector(this.x, this.y);
+    return new Vector(this.x * -1, this.y);
   }
 
   public Vector invertY() {
-    this.y *= -1;
-    return new Vector(this.x, this.y);
-  }
-
-  public double dotProduct(Vector vector) {
-    return (this.x * vector.x) + (this.y * vector.y);
-  }
-
-  public double crossProduct(Vector vector) {
-    return (this.x * vector.y - this.y * vector.x);
+    return new Vector(this.x, this.y * -1);
   }
 
   public Vector normaliseVector() {
@@ -162,6 +126,22 @@ public class Vector {
     } else {
       return new Vector(this.x / mag, this.y / mag);
     }
+  }
+
+  private double magnitude() {
+    return Math.sqrt((this.x * this.x) + (this.y * this.y));
+  }
+
+  private double findAngle() {
+    return Math.atan2(this.x, this.y) * 180 / Math.PI;
+  }
+
+  public double dotProduct(Vector vector) {
+    return (this.x * vector.getX()) + (this.y * vector.getY());
+  }
+
+  public double crossProduct(Vector vector) {
+    return (this.x * vector.getY() - this.y * vector.getX());
   }
 
   @Override
