@@ -83,38 +83,32 @@ public class Vector {
     this.x += vector.x;
     this.y += vector.y;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector subtractVector(Vector vector) {
     this.x -= vector.x;
     this.y -= vector.y;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector addY(double y) {
     this.y += y;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector addX(double x) {
     this.x += x;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector subtractY(double y) {
     this.y -= y;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector subtractX(double x) {
     this.x -= x;
     return new Vector(this.x, this.y);
-
   }
 
   public Vector setVector(Vector vector) {
@@ -172,9 +166,6 @@ public class Vector {
 
   @Override
   public String toString() {
-    return "Vector{" +
-        "x=" + x +
-        ", y=" + y +
-        '}';
+    return "Vector{" + "x=" + x + ", y=" + y + '}';
   }
 }
