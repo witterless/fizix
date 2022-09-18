@@ -9,4 +9,6 @@ public class Circle extends Shape {
   public Circle(double mass, Vector location, Vector velocity, Vector acceleration) {
     super(mass, location, velocity, acceleration);
   }
+
+
 }
